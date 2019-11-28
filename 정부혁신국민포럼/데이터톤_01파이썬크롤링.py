@@ -85,7 +85,7 @@ base_url = f"https://www.innogov.go.kr{url}"
 response = requests.get(base_url)
 response # 200 : OK
 html = bs(response.text, 'html.parser')
-print(html)
+# print(html)
 # inspector(검사)를 이용하여 copy > copy selector # content > div.vveiw_box1 > dl > dt
 html.select('#content > div.vveiw_box1 > dl > dt') # 리스트로 되어있다.
 # title 가져오기        
@@ -140,5 +140,9 @@ data = pd.DataFrame(data,columns=column_names)
 data.head()
 data["category"].value_counts()
 ## csv 파일로 저장하기
-data.to_csv("suggestion.csv",index=False)
+# 인코딩 문제가 생기는데...
+
+data.to_csv("정부혁신국민포럼/suggestion.csv",index='False',encoding='utf-8-sig')
+
 data.shape
+
